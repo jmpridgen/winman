@@ -7,21 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		507A71D81FE83E8F001723A8 /* WindowObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 507A71D71FE83E8F001723A8 /* WindowObserver.m */; };
+		507A71DB1FE8429C001723A8 /* WindowResizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 507A71DA1FE8429C001723A8 /* WindowResizer.m */; };
+		507A71DE1FE85B76001723A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 507A71DD1FE85B76001723A8 /* Assets.xcassets */; };
 		508725281FE091E1004EC61F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 508725271FE091E1004EC61F /* AppDelegate.m */; };
-		5087252A1FE091E1004EC61F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 508725291FE091E1004EC61F /* Assets.xcassets */; };
-		5087252D1FE091E1004EC61F /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5087252B1FE091E1004EC61F /* MainMenu.xib */; };
 		508725301FE091E1004EC61F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5087252F1FE091E1004EC61F /* main.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		507A71D61FE83E8F001723A8 /* WindowObserver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WindowObserver.h; sourceTree = "<group>"; };
+		507A71D71FE83E8F001723A8 /* WindowObserver.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WindowObserver.m; sourceTree = "<group>"; };
+		507A71D91FE8429C001723A8 /* WindowResizer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WindowResizer.h; sourceTree = "<group>"; };
+		507A71DA1FE8429C001723A8 /* WindowResizer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WindowResizer.m; sourceTree = "<group>"; };
+		507A71DD1FE85B76001723A8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		508725231FE091E1004EC61F /* winman.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = winman.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		508725261FE091E1004EC61F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		508725271FE091E1004EC61F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		508725291FE091E1004EC61F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		5087252C1FE091E1004EC61F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		5087252E1FE091E1004EC61F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5087252F1FE091E1004EC61F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		508725311FE091E1004EC61F /* winman.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = winman.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,11 +59,13 @@
 			children = (
 				508725261FE091E1004EC61F /* AppDelegate.h */,
 				508725271FE091E1004EC61F /* AppDelegate.m */,
-				508725291FE091E1004EC61F /* Assets.xcassets */,
-				5087252B1FE091E1004EC61F /* MainMenu.xib */,
 				5087252E1FE091E1004EC61F /* Info.plist */,
 				5087252F1FE091E1004EC61F /* main.m */,
-				508725311FE091E1004EC61F /* winman.entitlements */,
+				507A71D61FE83E8F001723A8 /* WindowObserver.h */,
+				507A71D71FE83E8F001723A8 /* WindowObserver.m */,
+				507A71D91FE8429C001723A8 /* WindowResizer.h */,
+				507A71DA1FE8429C001723A8 /* WindowResizer.m */,
+				507A71DD1FE85B76001723A8 /* Assets.xcassets */,
 			);
 			path = winman;
 			sourceTree = "<group>";
@@ -123,8 +128,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5087252A1FE091E1004EC61F /* Assets.xcassets in Resources */,
-				5087252D1FE091E1004EC61F /* MainMenu.xib in Resources */,
+				507A71DE1FE85B76001723A8 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,21 +141,12 @@
 			files = (
 				508725301FE091E1004EC61F /* main.m in Sources */,
 				508725281FE091E1004EC61F /* AppDelegate.m in Sources */,
+				507A71DB1FE8429C001723A8 /* WindowResizer.m in Sources */,
+				507A71D81FE83E8F001723A8 /* WindowObserver.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		5087252B1FE091E1004EC61F /* MainMenu.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				5087252C1FE091E1004EC61F /* Base */,
-			);
-			name = MainMenu.xib;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		508725321FE091E1004EC61F /* Debug */ = {
@@ -261,7 +256,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = winman/winman.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 25XDPBTB28;
@@ -276,7 +271,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = winman/winman.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 25XDPBTB28;

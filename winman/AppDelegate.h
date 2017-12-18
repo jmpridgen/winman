@@ -7,9 +7,12 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "WindowObserver.h"
 
-@interface AppDelegate : NSObject <NSApplicationDelegate>
-
+@interface AppDelegate : NSObject <NSApplicationDelegate>{
+    NSStatusItem *statusItem;
+    WindowObserver *myWindowObserver;
+}
 
 @end
 

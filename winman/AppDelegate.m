@@ -10,19 +10,64 @@
 
 @interface AppDelegate ()
 
-@property (weak) IBOutlet NSWindow *window;
 @end
+
 
 @implementation AppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-    // Insert code here to initialize your application
+    
+    [self requestAccessibilityPermissions];
+    
+    // Create status bar
+    NSStatusBar *statusBar = [NSStatusBar systemStatusBar];
+    statusItem = [statusBar statusItemWithLength:NSSquareStatusItemLength];
+    NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"AppIcon" ofType:@"icns"];
+    
+    NSImage *myImage = [[NSImage alloc] initByReferencingFile:imagePath];
+    // Use template rendering to allow for proper dark mode icon
+    // myImage.template = YES;
+    // [statusItem setImage:myImage];
+    NSStatusBarButton *myButton = [statusItem button];
+    [myButton setImage:myImage];
+    [myButton setImageScaling:NSImageScaleProportionallyUpOrDown];
+    //Create menu
+    [statusItem setMenu:[self createStatusBarMenu]];
+    
+    myWindowObserver = [[WindowObserver alloc] init];
+    
 }
 
 
-- (void)applicationWillTerminate:(NSNotification *)aNotification {
-    // Insert code here to tear down your application
+- (NSMenu *)createStatusBarMenu{
+    NSMenu * menu = [[NSMenu alloc] init];
+    
+//    NSMenuItem *settingsMenuItem = [[NSMenuItem alloc] initWithTitle:@"Settings" action:@selector(handleSettingsClick) keyEquivalent:@""];
+//    [settingsMenuItem setTarget:self];
+//    [menu addItem:settingsMenuItem];
+    
+    [menu addItem:[NSMenuItem separatorItem]];
+    
+    NSMenuItem *quitMenuItem = [[NSMenuItem alloc] initWithTitle:@"Quit" action:@selector(handleQuitPress) keyEquivalent:@""];
+    [quitMenuItem setTarget:self];
+    [menu addItem:quitMenuItem];
+    
+    return menu;
 }
 
+-(void)requestAccessibilityPermissions {
+    if (!AXIsProcessTrusted()){
+        NSDictionary *options = @{(__bridge id)kAXTrustedCheckOptionPrompt: @YES};
+        AXIsProcessTrustedWithOptions((CFDictionaryRef)options);
+    }
+}
+
+-(void)handleSettingsClick {
+//    NSLog(@"You pressed the settings");
+}
+
+-(void)handleQuitPress{
+    [NSApp terminate:self];
+}
 
 @end
