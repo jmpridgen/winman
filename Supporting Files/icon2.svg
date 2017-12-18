@@ -16,9 +16,9 @@
    id="svg8"
    inkscape:version="0.92.2 5c3e80d, 2017-08-06"
    sodipodi:docname="icon2.svg"
-   inkscape:export-filename="/Users/max/Documents/XCode/winman/Supporting Files/icon2.png"
-   inkscape:export-xdpi="19.967999"
-   inkscape:export-ydpi="19.967999">
+   inkscape:export-filename="/Users/max/Desktop/icon2.png"
+   inkscape:export-xdpi="384"
+   inkscape:export-ydpi="384">
   <defs
      id="defs2" />
   <sodipodi:namedview
@@ -48,7 +48,7 @@
        position="66.145832,66.145832"
        orientation="1,0"
        id="guide1495"
-       inkscape:locked="true"
+       inkscape:locked="false"
        inkscape:label=""
        inkscape:color="rgb(0,0,255)" />
     <sodipodi:guide
@@ -75,7 +75,7 @@
      id="layer1"
      transform="translate(0,-164.70832)">
     <path
-       style="fill:none;fill-rule:evenodd;stroke:#3498db;stroke-width:17.78;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="fill:none;fill-rule:evenodd;stroke:#3498db;stroke-width:17.78000069;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        d="m 26.080357,178.31547 v 52.53868 l 40.065476,-31.37202"
        id="path1517"
        inkscape:connector-curvature="0"
@@ -85,9 +85,9 @@
        inkscape:connector-curvature="0"
        id="path1549"
        d="m 106.21131,178.31547 v 52.53868 L 66.145831,199.48213"
-       style="fill:none;fill-rule:evenodd;stroke:#3498db;stroke-width:17.78;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+       style="fill:none;fill-rule:evenodd;stroke:#3498db;stroke-width:17.78000069;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
     <path
-       style="fill:none;fill-rule:evenodd;stroke:#3498db;stroke-width:17.78;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="fill:none;fill-rule:evenodd;stroke:#3498db;stroke-width:17.78000069;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        d="m 26.080357,283.39283 v -52.53868 l 40.065476,31.37202"
        id="path1551"
        inkscape:connector-curvature="0"
@@ -97,6 +97,6 @@
        inkscape:connector-curvature="0"
        id="path1553"
        d="M 106.21131,283.39283 V 230.85415 L 66.145833,262.22617"
-       style="fill:none;fill-rule:evenodd;stroke:#3498db;stroke-width:17.78;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+       style="fill:none;fill-rule:evenodd;stroke:#3498db;stroke-width:17.78000069;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
   </g>
 </svg>
