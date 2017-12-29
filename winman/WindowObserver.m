@@ -178,7 +178,13 @@ void windowDidMoveCallback(AXObserverRef observer, AXUIElementRef elementRef, CF
 }
 
 -(void) handleWindowMoved:(CFStringRef) notification {
-    windowMoving = true;
+    if (mouseDown == true)
+    {
+        windowMoving = true;
+    }
+    else {
+        windowMoving = false;
+    }
 }
 
 
