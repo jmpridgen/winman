@@ -9,8 +9,8 @@
 #import <Cocoa/Cocoa.h>
 
 @interface WindowResizer : NSObject
-    +(void)leftSide;
-    +(void)rightSide;
+    +(void) leftSide;
+    +(void) rightSide;
     +(void) fullScreen;
 
 @end

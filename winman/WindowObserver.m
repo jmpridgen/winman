@@ -104,11 +104,14 @@
 -(void) handleMouseUp:(NSEvent *) event {
     if (windowMoving == true) {
         NSPoint mouseLocation = [event locationInWindow];
-        if (mouseIsOnLeft(mouseLocation)) {
+        NSScreen *myScreen = getScreenFromEventLocation(mouseLocation);
+        CGRect myScreenFrame = [myScreen frame];
+        
+        if (mouseIsOnLeft(mouseLocation, myScreenFrame)) {
             [WindowResizer leftSide];
-        } else if (mouseIsOnRight(mouseLocation)) {
+        } else if (mouseIsOnRight(mouseLocation, myScreenFrame)) {
             [WindowResizer rightSide];
-        } else if (mouseIsOnFullScreen(mouseLocation)) {
+        } else if (mouseIsOnFullScreen(mouseLocation, myScreenFrame)) {
             [WindowResizer fullScreen];
         }
     }
@@ -122,26 +125,24 @@
     
 //    NSLog(@"%@",incomingEvent);
     NSPoint mouseLocation = [incomingEvent locationInWindow];
-//    NSLog(@"%@",NSStringFromPoint(mouseLocation));
-    //    NSLog(@"%s",incomingEvent.userData);
     if (windowMoving == true) {
-        NSScreen *myScreen = [NSScreen mainScreen];
-        CGRect myScreenSize = [myScreen frame];
-        if (mouseIsOnLeft(mouseLocation)){
-            if (overlayPanel == nil || ![overlayPanel isVisible]){
-                NSRect panelSize = NSMakeRect(0, 0, myScreenSize.size.width/2, myScreenSize.size.height);
+        NSScreen *myScreen = getScreenFromEventLocation(mouseLocation);
+        CGRect myScreenFrame = [myScreen frame];
+        if (mouseIsOnLeft(mouseLocation, myScreenFrame)){
+            if (overlayPanel == nil || ![overlayPanel isVisible] || [overlayPanel screen] != myScreen){
+                NSRect panelSize = NSMakeRect(myScreenFrame.origin.x, myScreenFrame.origin.y, myScreenFrame.size.width/2, myScreenFrame.size.height);
                 [overlayPanel setFrame:panelSize display:true];
                 [overlayPanel setIsVisible: true];
             }
-        } else if(mouseIsOnRight(mouseLocation)){
-            if (overlayPanel == nil || ![overlayPanel isVisible]){
-                NSRect panelSize = NSMakeRect(myScreenSize.size.width/2, 0, myScreenSize.size.width/2, myScreenSize.size.height);
+        } else if(mouseIsOnRight(mouseLocation, myScreenFrame)){
+            if (overlayPanel == nil || ![overlayPanel isVisible] || [overlayPanel screen] != myScreen){
+                NSRect panelSize = NSMakeRect(myScreenFrame.origin.x + myScreenFrame.size.width/2, myScreenFrame.origin.y, myScreenFrame.size.width/2, myScreenFrame.size.height);
                 [overlayPanel setFrame:panelSize display:true];
                 [overlayPanel setIsVisible: true];
             }
-        } else if(mouseIsOnFullScreen(mouseLocation)){
-            if (overlayPanel == nil || ![overlayPanel isVisible]){
-                NSRect panelSize = NSMakeRect(0, 0, myScreenSize.size.width, myScreenSize.size.height);
+        } else if(mouseIsOnFullScreen(mouseLocation, myScreenFrame)){
+            if (overlayPanel == nil || ![overlayPanel isVisible] || [overlayPanel screen] != myScreen){
+                NSRect panelSize = NSMakeRect(myScreenFrame.origin.x, myScreenFrame.origin.y, myScreenFrame.size.width, myScreenFrame.size.height);
                 [overlayPanel setFrame:panelSize display:true];
                 [overlayPanel setIsVisible: true];
             }
@@ -152,19 +153,19 @@
     }
 }
 
-BOOL mouseIsOnLeft(NSPoint mouseLocation){
-    return  mouseLocation.x < 100;
+BOOL mouseIsOnLeft(NSPoint mouseLocation, CGRect myScreenFrame){
+    CGRect rectangleToCheck = CGRectMake(myScreenFrame.origin.x, myScreenFrame.origin.y, 100, myScreenFrame.size.height);
+    return CGRectContainsPoint(rectangleToCheck, mouseLocation);
 }
 
-BOOL mouseIsOnRight(NSPoint mouseLocation) {
-    CGRect myScreenSize = [[NSScreen mainScreen] frame];
-    return mouseLocation.x > myScreenSize.size.width - 100;
+BOOL mouseIsOnRight(NSPoint mouseLocation, CGRect myScreenFrame) {
+    CGRect rectangleToCheck = CGRectMake(myScreenFrame.origin.x + myScreenFrame.size.width - 100, myScreenFrame.origin.y, 100, myScreenFrame.size.height);
+    return CGRectContainsPoint(rectangleToCheck, mouseLocation);
 }
 
-BOOL mouseIsOnFullScreen(NSPoint mouseLocation) {
-    CGRect myScreenSize = [[NSScreen mainScreen] frame];
-    BOOL returnValue = mouseLocation.y > myScreenSize.size.height - 100 && mouseLocation.x > myScreenSize.size.width/2 - 100 && mouseLocation.x < myScreenSize.size.width/2 + 100;
-    return returnValue;
+BOOL mouseIsOnFullScreen(NSPoint mouseLocation, CGRect myScreenFrame) {
+    CGRect rectangleToCheck = CGRectMake(myScreenFrame.origin.x + myScreenFrame.size.width/2 - 100, myScreenFrame.origin.y + myScreenFrame.size.height - 100, 200, 100);
+    return CGRectContainsPoint(rectangleToCheck, mouseLocation);
 }
 
 -(void) handleWorkspaceNotification {
@@ -178,13 +179,25 @@ void windowDidMoveCallback(AXObserverRef observer, AXUIElementRef elementRef, CF
 }
 
 -(void) handleWindowMoved:(CFStringRef) notification {
-    if (mouseDown == true)
-    {
+    if (mouseDown == true) {
         windowMoving = true;
     }
     else {
         windowMoving = false;
     }
+}
+
+// find out which screen the event occurred in
+NSScreen* getScreenFromEventLocation(NSPoint mouseLocation) {
+    NSArray *myScreens = [NSScreen screens];
+    for (NSScreen *screen in myScreens) {
+        bool isPointInsideScreen = CGRectContainsPoint(screen.frame, mouseLocation);
+        if (isPointInsideScreen) {
+            return screen;
+        }
+    }
+    // if we can't find the screen, just return the main screen
+    return [NSScreen mainScreen];
 }
 
 
